@@ -48,7 +48,8 @@ export class AppService {
             },
         };
         return await this.esclient.search({index: 'pokemons', body, q})
-            .then(res => res.hits.hits)
-            .catch(err => { throw new HttpException(err, 500); });
+            // .then(res =>{ res.hits.hits
+            //     console.log( res.hits.hits)})
+            // .catch(err => { throw new HttpException(err, 500); });
     }
 }
