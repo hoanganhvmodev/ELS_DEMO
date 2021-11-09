@@ -5,6 +5,7 @@ import { BrandsService } from 'src/brands/brands.service';
 import { Repository } from 'typeorm';
 import { Product } from './product.entity';
 import {getConnection} from "typeorm";
+import { ElasticsearchService } from '@nestjs/elasticsearch';
 
 
 @Injectable()
@@ -12,14 +13,14 @@ export class ProductsService {
     constructor(
     @InjectRepository(Product) private readonly productRepository: Repository<Product>,
     private readonly brandsService:BrandsService,
+    // private readonly elasticsearchService: ElasticsearchService
     ){}
 
     async getAll():Promise<Product[]> {
-        return await this.productRepository.find();
+        return await this.productRepository.find(); 
     }
 
     async create(data):Promise<Product> {
-        
         return this.productRepository.save(data);
     }
 
@@ -41,4 +42,18 @@ export class ProductsService {
         await Promise.all(br)
          return this.productRepository.delete({id});
     }
+
+    // async createProduct(productData: any): Promise<boolean> {
+    //     try {
+    //       await this.elasticsearchService.create({
+    //         index: 'product',
+    //         id: productData.search_result_data.id,
+    //         body: productData
+    //       })
+    //       return true 
+    //     } catch (error) {
+    //       console.log(error)
+    //     }
+    //   }
+    
 }
