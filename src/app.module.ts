@@ -6,7 +6,6 @@ import { BrandsModule } from './brands/brands.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { subcriberModule } from './subcriber/subcriber.module';
 
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -14,15 +13,15 @@ import { subcriberModule } from './subcriber/subcriber.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'hoanganh1999zzz',
+      password: '123456',
       database: 'nestjs_els',
-      autoLoadEntities:true,
+      autoLoadEntities: true,
       // logging:'all',
       synchronize: true,
     }),
     ProductsModule,
-     BrandsModule,
-     subcriberModule
+    BrandsModule,
+    subcriberModule,
   ],
   controllers: [],
   providers: [],
