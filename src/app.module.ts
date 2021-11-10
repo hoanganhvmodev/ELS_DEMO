@@ -5,6 +5,7 @@ import { ProductsModule } from './products/products.module';
 import { BrandsModule } from './brands/brands.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { subcriberModule } from './subcriber/subcriber.module';
+import { SubcribersModule } from './subtype/sub.module';
 
 
 @Module({
@@ -22,7 +23,8 @@ import { subcriberModule } from './subcriber/subcriber.module';
     }),
     ProductsModule,
      BrandsModule,
-     subcriberModule
+     subcriberModule,
+     SubcribersModule
   ],
   controllers: [],
   providers: [],

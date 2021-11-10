@@ -46,7 +46,7 @@ export class ProductsController {
         @Body('status') status:string,
         @Body('price') price:number,
         ){
-           const product =await this.productService.update(id,{name,status,price});
+           const product =await this.productService.update(id,{id,name,status,price});
            return{
                message:`Updated Product ID: ${id} Success`,
            }

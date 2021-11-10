@@ -9,7 +9,6 @@ export class subcriberController {
   @Post('create')
   async createIndexAndInsert(@Body() documents: any[]) {
       let abc =  await this.subcriberService.bulkInsert(documents);
-      console.log(">>>>>>>>>>>>>>>>>>",abc);
       return abc;
   }
 
@@ -19,5 +18,7 @@ export class subcriberController {
       console.log(results)
       return results;
   }
+
+  
 
 }

@@ -20,22 +20,34 @@ export class subcriberService {
        });
   }
 
-  async bulkInsert(abilities: any[]) {
+  async bulkInsert(abilities: any) {
       const bulk = [];
-      abilities.forEach(ability => {
-          bulk.push({ 
-              index: {_index: 'product', _type: 'abilities'} 
-          });
-          bulk.push(ability);
-      });
+      bulk.push({ 
+        index: {_index: 'product'} 
+    });
+    bulk.push(abilities);
       return await this.esclient.bulk({
           body: bulk, 
           index: 'product', 
-          type: 'abilities'
       })
       .then(res => ({status: 'success', data: res}))
       .catch(err => { throw new HttpException(err, 500); });
   }
+
+  async bulkUpdate(abilities: any) {
+    const bulk = [];
+    bulk.push({ 
+      index: {_index: 'product'} 
+  });
+  bulk.push(abilities);
+    return await this.esclient.bulk({
+        body: bulk, 
+        index: 'product', 
+    })
+    .then(res => ({status: 'success', data: res}))
+    .catch(err => { throw new HttpException(err, 500); });
+}
+
 
   // searches the 'product' index for matching documents
   async searchIndex(q: string) {
@@ -52,17 +64,6 @@ export class subcriberService {
       return results.hits.hits
   }
 
-  // async createProduct(productData: any): Promise<boolean> {
-  //   try {
-  //     await this.elasticsearchService.create({
-  //       index: 'product',
-  //       id: productData.search_result_data.id,
-  //       body: productData
-  //     })
-  //     return true 
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
 
+  
 }

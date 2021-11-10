@@ -18,5 +18,7 @@ import { subcriberService } from './subcriber.service'
   ],
   providers: [subcriberService],
   controllers: [subcriberController],
+  exports :[subcriberService]
 })
+
 export class subcriberModule {} 
