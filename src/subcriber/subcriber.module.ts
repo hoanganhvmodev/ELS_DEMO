@@ -9,16 +9,16 @@ import { subcriberService } from './subcriber.service'
 @Module({
   imports: [
     ElasticsearchModule.register({
-       node: 'http://localhost:9200',
+      node: 'http://localhost:9200',
       maxRetries: 10,
       requestTimeout: 60000,
     }),
     TypeOrmModule.forFeature([Product]),
-    
+
   ],
   providers: [subcriberService],
   controllers: [subcriberController],
-  exports :[subcriberService]
+  exports: [subcriberService]
 })
 
-export class subcriberModule {} 
+export class subcriberModule { }

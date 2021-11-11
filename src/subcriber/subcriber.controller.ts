@@ -6,11 +6,11 @@ import { subcriberService } from './subcriber.service';
 export class subcriberController {
   constructor(private readonly subcriberService: subcriberService) {}
 
-  @Post('create')
-  async createIndexAndInsert(@Body() documents: any[]) {
-      let abc =  await this.subcriberService.bulkInsert(documents);
-      return abc;
-  }
+  // @Post('create')
+  // async createIndexAndInsert(@Body() documents: any[]) {
+  //     let abc =  await this.subcriberService.afterInsert(documents);
+  //     return abc;
+  // }
 
   @Get('search')
   async searchPokemonAbilities(@Query('q') q: string) {
@@ -18,7 +18,5 @@ export class subcriberController {
       console.log(results)
       return results;
   }
-
-  
 
 }
